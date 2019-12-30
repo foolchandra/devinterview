@@ -81,3 +81,5 @@ venv.bak/
 .idea/
 private_key.ppk
 public_key
+*.json
+static/CACHE/

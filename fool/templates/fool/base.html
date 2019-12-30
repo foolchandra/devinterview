@@ -1,0 +1,44 @@
+{% load compress %}
+{% load static %}
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  {# Required meta tags #}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {# Fonts #}
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,500,300italic,400italic,700italic,500italic" rel="stylesheet" type="text/css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  {# Base styles #}
+  {% compress css %}
+    <link type="text/x-scss" href="{% static 'fool/scss/base.scss' %}" rel="stylesheet" media="screen">
+    {% block scss_extra %}{% endblock %}
+  {% endcompress %}
+
+  <title>
+    {% block page_title %}{% endblock %}
+  </title>
+  <link rel="icon" href="{% static 'fool/images/favicon.ico' %}">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="navbar mb-5 d-none d-sm-block">
+      {# Navbar content #}
+    </div>
+    <div class="row">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+{% extends 'fool/base.html' %}
+
+{% load author_filters %}
+{% load date_filters %}
+{% load static %}
+
+
+{% block scss_extra %}
+  <link type="text/x-scss" href="{% static 'fool/scss/homepage.scss' %}" rel="stylesheet" media="screen">
+  <link type="text/x-scss" href="{% static 'fool/scss/article/card/article-card.scss' %}" rel="stylesheet" media="screen">
+  <link type="text/x-scss" href="{% static 'fool/scss/article/card/top-article-card.scss' %}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block page_title %}Fool.com{% endblock %}
+
+{% block content %}
+  {# Top article  #}
+  <div class="top-article">
+    {% include 'fool/article/top-article.html' with extra_classes='top-article-card' article=top_article %}
+  </div>
+
+  <hr>
+
+  {# Secondary articles  #}
+  <div class="row secondary-articles">
+    {% for article in secondary_articles %}
+      <div class="col-md-6 col-lg-4">
+          {% include 'fool/article/article.html' %}
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}
