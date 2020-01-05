@@ -4,18 +4,22 @@
 
 <div class="d-md-block d-lg-flex article-card {{ extra_classes }}">
   <div class="article-image-container col-lg-7 col-md-12">
-    <img class="article-image" src="{{ article.featured_image }}"/>
+    <a class="article-card-link" href="{{ article.get_url }}">
+      <img class="article-image" src="{{ article.featured_image }}"/>
+    </a>
   </div>
   <div class="article-info col-lg-5 col-md-12">
     <div class="article-headline">
-      {{ article.headline }}
+      <a class="article-card-link" href="{{ article.get_url }}">
+        {{ article.headline }}
+      </a>
     </div>
     <div class="article-byline-dateline d-flex">
       <div class="article-byline">
         {{ top_article|format_article_authors_list }}
       </div>
       <div class="article-dateline">
-        {{ top_article.publish_at|format_article_date }}
+        {{ top_article.publish_at|format_date }}
       </div>
     </div>
     <div class="article-promo">

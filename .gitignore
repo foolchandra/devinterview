@@ -83,3 +83,4 @@ private_key.ppk
 public_key
 *.json
 static/CACHE/
+node_modules/

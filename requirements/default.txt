@@ -1,3 +1,9 @@
-Django==3.0.1
-django_compressor==2.2
+Django==2.2
+django-appconf==1.0.3
+django-compressor==2.3
 django-libsass==0.7
+libsass==0.19.4
+rcssmin==1.0.6
+rjsmin==1.1.0
+six==1.13.0
+sqlparse==0.3.0

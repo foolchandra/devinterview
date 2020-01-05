@@ -1,0 +1,22 @@
+{% load date_filters %}
+{% load static %}
+
+
+<div class="article-comments">
+  {% for comment in comments %}
+    <div class="article-comment">
+      <div class="d-flex">
+        <div class="article-comment-author-avatar-container">
+          <img class="article-comment-author-avatar" src="{% static 'fool/images/default_avatar.png' %}" alt="" />
+        </div>
+        <div class="article-comment-content">
+          <span class="article-comment-author">Anonymous</span>
+          <span class="article-comment-date">{{ comment.created|format_date_time_age }}</span>
+          <div class="article-comment-text">
+            {{ comment.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

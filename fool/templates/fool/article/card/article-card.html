@@ -1,0 +1,27 @@
+{% load author_filters %}
+{% load date_filters %}
+
+
+<div class="article-card {{ extra_classes }}">
+  <div class="article-image-container">
+    <a class="article-card-link" href="{{ article.get_url }}">
+      <img class="article-image" src="{{ article.featured_image }}"/>
+    </a>
+  </div>
+  <div class="article-headline">
+    <a class="article-card-link" href="{{ article.get_url }}">
+      {{ article.headline }}
+    </a>
+  </div>
+  <div class="article-byline-dateline">
+    <div class="article-byline">
+      {{ article|format_article_authors_list }}
+    </div>
+    <div class="article-dateline">
+      {{ article.publish_at|format_date }}
+    </div>
+  </div>
+  <div class="article-promo">
+    {{ article.promo }}
+  </div>
+</div>

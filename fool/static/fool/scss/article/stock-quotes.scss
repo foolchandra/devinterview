@@ -1,0 +1,33 @@
+@import '../variables';
+
+
+.related-stock-quotes {
+    margin-top: 1rem;
+    border-top: 1px solid $border-color-light;
+    padding-top: 1rem;
+}
+
+.related-stock-quotes-header {
+    font-weight: $medium-bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.stock-quote-row {
+    margin-bottom: 1rem;
+}
+
+.stock-quote-company-name {
+    font-weight: $medium-bold;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.stock-quote-change-amount,
+.stock-quote-change-percent {
+    color: $stock-gain-color;
+}
+
+.negative-amount {
+    color: $stock-loss-color;
+}

@@ -25,6 +25,7 @@ class Command(BaseCommand):
                     quote_id=json_stock_quote_data['InstrumentId'],
                     company_name=json_stock_quote_data['CompanyName'],
                     symbol=json_stock_quote_data['Symbol'],
+                    exchange_name=json_stock_quote_data['ExchangeName'],
                     description=json_stock_quote_data['Description']
                 )
                 if newly_created:

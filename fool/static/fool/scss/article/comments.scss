@@ -1,0 +1,44 @@
+@import '../variables';
+
+
+.add-comment-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-comment {
+    width: 100%;
+}
+
+.btn-add-comment {
+    float: right;
+    margin-top: 1rem;
+}
+
+.article-comment {
+    margin-bottom: 2rem;
+}
+
+
+.article-comment-author-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.article-comment-content {
+    margin-left: .5rem;
+    line-height: 1rem;
+}
+
+.article-comment-author {
+    font-weight: $medium-bold;
+}
+
+.article-comment-date {
+    color: $muted;
+}
+
+.article-comment-text {
+    margin-top: .5rem;
+}

@@ -13,19 +13,19 @@
 
 {% block page_title %}Fool.com{% endblock %}
 
+{% block body_class %}homepage{% endblock %}
+
 {% block content %}
   {# Top article  #}
-  <div class="top-article">
-    {% include 'fool/article/top-article.html' with extra_classes='top-article-card' article=top_article %}
+  <div class="row top-article">
+    {% include 'fool/article/card/top-article-card.html' with extra_classes='top-article-card' article=top_article %}
   </div>
-
-  <hr>
 
   {# Secondary articles  #}
   <div class="row secondary-articles">
     {% for article in secondary_articles %}
       <div class="col-md-6 col-lg-4">
-          {% include 'fool/article/article.html' %}
+          {% include 'fool/article/card/article-card.html' %}
       </div>
     {% endfor %}
   </div>

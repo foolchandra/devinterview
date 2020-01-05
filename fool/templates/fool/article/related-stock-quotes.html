@@ -1,0 +1,16 @@
+{% load static %}
+
+
+<script type="text/javascript" src="{% static 'fool/js/stock-quotes.js'%}"></script>
+
+<section class="related-stock-quotes">
+  <div class="related-stock-quotes-header">Stocks</div>
+  <div class="related-stock-quotes-rows">
+    {% for stock_quote in related_stock_quotes %}
+      {% if stock_quote.is_valid %}
+        {% include 'fool/article/stock-quotes/stock-quote.html' %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <button type="button" class="btn btn-primary shuffle-stock-quotes">Shuffle Quotes</button>
+</section>

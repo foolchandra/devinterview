@@ -1,0 +1,20 @@
+{% load number_filters %}
+
+
+<div class="stock-quote-row">
+  <div class="stock-quote-company-name">
+    {{ stock_quote.company_name }}
+  </div>
+  <div class="stock-quote-exchange-symbol">
+    {{ stock_quote.exchange_name }}:{{ stock_quote.symbol }}
+  </div>
+  <div>
+    <span class="stock-quote-current-price">{{ stock_quote.current_price|format_currency }}</span>
+    <span class="stock-quote-change-amount {% if stock_quote.change_percent < 0 %}negative-amount{% endif %} }}">
+      {{ stock_quote.get_change_amount|format_currency }}
+    </span>
+    <span class="stock-quote-change-percent {% if stock_quote.change_percent < 0 %}negative-amount{% endif %}">
+      ({{ stock_quote.change_percent|format_percent }})
+    </span>
+  </div>
+</div>

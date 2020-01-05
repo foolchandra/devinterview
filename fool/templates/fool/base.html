@@ -18,6 +18,7 @@
   {# Base styles #}
   {% compress css %}
     <link type="text/x-scss" href="{% static 'fool/scss/base.scss' %}" rel="stylesheet" media="screen">
+    <link type="text/x-scss" href="{% static 'fool/scss/navbar.scss' %}" rel="stylesheet" media="screen">
     {% block scss_extra %}{% endblock %}
   {% endcompress %}
 
@@ -28,17 +29,20 @@
 
 </head>
 
-<body>
-  <div class="container">
-    <div class="navbar mb-5 d-none d-sm-block">
-      {# Navbar content #}
-    </div>
-    <div class="row">
-      {% block content %}{% endblock %}
-    </div>
+<body class="{% block body_class %}{% endblock %}">
+  {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+  {% endblock %}
+
+  {# Navbar #}
+  <div class="navbar fixed-top">
+      {% include 'fool/navbar/nav.html' %}
   </div>
 
-  {% block scripts %}{% endblock %}
+  {# Content #}
+  <div class="container content-container">
+    {% block content %}{% endblock %}
+  </div>
 </body>
 
 </html>

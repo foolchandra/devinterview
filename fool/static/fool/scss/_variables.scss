@@ -15,8 +15,17 @@ $font-family: Roboto, sans-serif;
 $medium-bold: 500;
 $very-bold: 700;
 $muted: #888;
+$link-color: #0095d5;
+$link-color-light: #3ad1ff;
+
+// Money
+$stock-loss-color: #b00;
+$stock-gain-color: #071;
 
 // Div
-$border-light: #bbb;
-$border-color: #e6e6e6;
+$border-color-light: #e6e6e6;
 $box-shadow-color: #e6e6e6;
+
+// Navbar
+$navbar-height: 65px;
+$navbar-height-sm: 50px;

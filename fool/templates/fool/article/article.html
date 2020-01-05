@@ -1,23 +1,57 @@
+{% extends 'fool/base.html' %}
+
 {% load author_filters %}
+{% load comments %}
 {% load date_filters %}
+{% load static %}
 
 
-<div class="article-card {{ extra_classes }}">
-  <div class="article-image-container">
-    <img class="article-image" src="{{ article.featured_image }}"/>
-  </div>
-  <div class="article-headline">
-    {{ article.headline }}
-  </div>
-  <div class="article-byline-dateline d-flex">
-    <div class="article-byline">
-      {{ article|format_article_authors_list }}
+{% block scss_extra %}
+  <link type="text/x-scss" href="{% static 'fool/scss/article/article.scss' %}" rel="stylesheet" media="screen">
+  <link type="text/x-scss" href="{% static 'fool/scss/article/stock-quotes.scss' %}" rel="stylesheet" media="screen">
+  <link type="text/x-scss" href="{% static 'fool/scss/article/comments.scss' %}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block body_class %}article{% endblock %}
+
+{% block content %}
+  <div class="article-page">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="article-headline">
+          {{ article.headline }}
+        </div>
+      </div>
     </div>
-    <div class="article-dateline">
-      {{ article.publish_at|format_article_date }}
+    <div class="row">
+      <main class="col-sm-12 col-md-8">
+        <div class="article-byline-dateline">
+          <div class="article-byline">
+            {{ article|format_article_authors_list }}
+          </div>
+          <div class="article-dateline">
+            {{ article.publish_at|format_date }}
+          </div>
+        </div>
+        <article class="article-body">
+          <div class="article-content">
+            {{ article.body|safe }}
+            <div class="article-pitch">
+              {{ article.pitch|safe }}
+            </div>
+          </div>
+          <div class="article-disclosure">
+            {{ article.disclosure|safe }}
+          </div>
+        </article>
+        <section class="article-comments-section">
+          {% include 'fool/article/comments/add-comment.html' with article_id=article.id %}
+          {% show_article_comments article %}
+        </section>
+      </main>
+      <aside class="col-sm-12 col-md-4 pl-sm-3 pl-md-5">
+        {% include 'fool/article/related-stock-quotes.html' %}
+      </aside>
     </div>
   </div>
-  <div class="article-promo">
-    {{ article.promo }}
-  </div>
-</div>
+{% endblock %}

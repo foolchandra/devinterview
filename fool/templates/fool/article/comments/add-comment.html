@@ -1,0 +1,22 @@
+{% load static %}
+
+
+<script type="text/javascript" src="{% static 'fool/js/comments.js'%}"></script>
+
+<div class="add-comment-container">
+  <form id="add_comment_form" method="POST" class="form-group" action="/article/add-comment/">
+    <textarea name="text" class="new-comment" rows="3" cols="60"></textarea>
+    <div class="comment-post-container">
+      <a href="" class="btn btn-success btn-add-comment">Post</a>
+    </div>
+  </form>
+</div>
+
+<script>
+    $('.btn-add-comment').click( function(e) {
+        e.preventDefault();
+        let form_url = $('#add_comment_form').attr('action');
+        let new_comment_text = $('.new-comment').val();
+        addComment(form_url, new_comment_text, {{ article_id }}, '.article-comments', '.new-comment');
+    });
+</script>

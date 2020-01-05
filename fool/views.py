@@ -1,7 +1,10 @@
 import random
 
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
 
+from fool.forms import CommentForm
 from fool.models import Article
 
 
@@ -19,6 +22,7 @@ class HomepageView(TemplateView):
             'top_article': self.top_article,
             'secondary_articles': self.get_secondary_articles()
         })
+
         return context
 
     def set_top_article(self):
@@ -57,3 +61,46 @@ class HomepageView(TemplateView):
             return secondary_articles
         else:
             raise Exception('Set top article before retrieving secondary articles.')
+
+
+class ArticleView(TemplateView):
+    template_name = 'fool/article/article.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ArticleView, self).get_context_data(**kwargs)
+
+        slug = kwargs['article_slug']
+
+        try:
+            article = Article.objects.get(slug=slug)
+        except Article.DoesNotExist:
+            raise Exception('Article with slug "{0}" does not exist.'.format(slug))
+
+        context.update({
+            'article': article,
+            'related_stock_quotes': article.stock_quotes.all(),
+        })
+
+        return context
+
+
+@csrf_exempt
+def add_new_article_comment(request):
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+
+            try:
+                article = Article.objects.get(pk=request.POST.get('article_id'))
+            except Article.DoesNotExist:
+                raise Exception('Cannot add comment. Article does not exist.')
+
+            new_comment.article = article
+            new_comment.save()
+
+            context = {'comments': article.comments.all().order_by('-created')}
+            return render(request, 'fool/article/comments/comments.html', context)
+        else:
+            raise Exception('Error occurred while adding comment.')

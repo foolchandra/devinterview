@@ -20,11 +20,13 @@ $top-article-promo-line-height-md: 1.65rem;
 
 .top-article-card {
     padding-bottom: 2rem;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $border-color-light;
+    margin-bottom: 2rem;
 
     .article-image-container {
         max-height: $top-article-card-img-container-max-height;
         overflow: hidden;
+        padding: 0 2rem 0 0;
 
         @media (max-width: $lg-max) {
             margin-bottom: 1.5rem;
@@ -33,6 +35,7 @@ $top-article-promo-line-height-md: 1.65rem;
         @media (max-width: $md-max) {
             max-height: $top-article-card-img-container-max-height-md;
             text-align: center;
+            padding: 0;
         }
 
         @media (max-width: $sm-max) {
@@ -44,6 +47,15 @@ $top-article-promo-line-height-md: 1.65rem;
     .article-image {
         max-width: $top-article-card-img-max-width;
         overflow: hidden;
+    }
+
+    .article-info {
+        padding: 0;
+
+        @media (max-width: $sm-max) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
     }
 
     .article-headline {

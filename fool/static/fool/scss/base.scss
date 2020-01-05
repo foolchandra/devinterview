@@ -3,11 +3,39 @@
 
 
 body {
+    font-family: $font-family;
     background-color: #e5e5e5;
+    padding-top: $navbar-height;
+
+    @media (max-width: $sm-max) {
+        padding-top: $navbar-height-sm;
+    }
 }
 
-.container {
+.content-container {
     background-color: white;
+    padding: 2rem;
     margin-bottom: 2rem;
-    border-radius: 8px;
+}
+
+body.homepage {
+    .content-container {
+        @media (max-width: $sm-max) {
+            padding-left: .5rem;
+            padding-right: .5rem;
+        }
+    }
+}
+
+body.article {
+    .content-container {
+        @media (max-width: $sm-max) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+input, textarea {
+    font-family: $font-family;
 }

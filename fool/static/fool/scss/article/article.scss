@@ -1,0 +1,128 @@
+@import '../variables';
+
+// Article headline font
+$article-headline-font-size: 3rem;
+$article-headline-line-height: 3.5rem;
+$article-headline-font-size-lg: 2rem;
+$article-headline-line-height-lg: 2.5rem;
+$article-headline-font-size-sm: 1.75rem;
+$article-headline-line-height-sm: 2.25rem;
+
+// Article byline and dateline font
+$article-byline-dateline-font-size: 1rem;
+$article-byline-dateline-line-height: 1.5rem;
+$article-byline-dateline-font-size-sm: .85rem;
+$article-byline-dateline-line-height-sm: 1.35rem;
+
+// Article promo font
+$article-promo-font-size: 1.15rem;
+$article-promo-line-height: 1.65rem;
+
+// Mixin
+@mixin article-link {
+    a {
+        color: $link-color;
+
+        text-decoration: none;
+
+        &:hover {
+            color: $link-color-light;
+        }
+    }
+}
+
+.article-image {
+    border-radius: 4px;
+}
+
+.article-headline {
+    font-weight: $very-bold;
+    margin-bottom: .5rem;
+}
+
+.article-byline-dateline {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.article-byline,
+.article-dateline {
+    font-weight: $medium-bold;
+    color: $muted;
+}
+
+.article-dateline::before {
+    content: "|";
+    padding-left: .5rem;
+    padding-right: .3rem;
+}
+
+.article-page {
+    padding: 0 1rem 2rem 1rem;
+
+    .article-headline {
+        font-size: $article-headline-font-size;
+        line-height: $article-headline-line-height;
+
+        @media (max-width: $lg-max) {
+            font-size: $article-headline-font-size-lg;
+            line-height: $article-headline-line-height-lg;
+        }
+
+        @media (max-width: $sm-max) {
+            font-size: $article-headline-font-size-sm;
+            line-height: $article-headline-line-height-sm;
+        }
+    }
+
+    .article-byline-dateline {
+        margin-bottom: 2rem;
+    }
+
+    .article-byline,
+    .article-dateline {
+        font-size: $article-byline-dateline-font-size;
+        line-height: $article-byline-dateline-line-height;
+
+        @media (max-width: $sm-max) {
+            font-size: $article-byline-dateline-font-size-sm;
+            line-height: $article-byline-dateline-line-height-sm;
+        }
+    }
+
+    .article-body {
+        margin-bottom: 2rem;
+    }
+
+    .article-content {
+        padding: 0;
+
+        @include article-link;
+
+        img {
+            max-width: 80%;
+
+            @media (max-width: $md-max) {
+                max-width: 100%;
+            }
+        }
+
+        h2 {
+            font-size: 1.5rem;
+
+            @media (max-width: $sm-max) {
+                font-size: 1.25rem;
+            }
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    .article-disclosure {
+        @include article-link;
+        font-size: .9rem;
+        color: #444;
+    }
+}
